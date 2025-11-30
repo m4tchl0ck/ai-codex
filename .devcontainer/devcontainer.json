@@ -1,0 +1,62 @@
+{
+  "name": "AI Task Worker",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspaces",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/rio/features/chezmoi:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers-extra/features/fzf:1": {}
+  },
+  "containerEnv": {
+  },
+  "initializeCommand": ".devcontainer/initialize.sh '${localEnv:HOME}' '${localEnv:USERPROFILE}' '${devcontainerId}' './'",
+  "postCreateCommand": ".devcontainer/postCreate.sh",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.zsh_history.${devcontainerId},target=/home/vscode/.zsh_history,type=bind",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "asciidoctor.asciidoctor-vscode",
+        "streetsidesoftware.code-spell-checker",
+        "github.copilot",
+        "github.copilot-chat",
+        "alexkrechik.cucumberautocomplete",
+        "cucumberautocomplete.cucumberautocomplete",
+        "cucumberopen.cucumber-official",
+        "balrog994.cucumber-test-runner",
+        "EditorConfig.EditorConfig",
+        "mohsen1.prettify-json",
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "oderwat.indent-rainbow",
+        "kisstkondoros.vscode-codemetrics",
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint",
+        "github.vscode-github-actions",
+        "graphql.vscode-graphql",
+        "heaths.vscode-guid",
+        "mrmlnc.vscode-json5",
+        "github.vscode-pull-request-github",
+        "stylelint.vscode-stylelint",
+        "pkief.material-icon-theme",
+        "esbenp.prettier-vscode",
+        "humao.rest-client"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}
